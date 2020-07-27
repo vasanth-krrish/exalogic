@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :emergencyinfos, except: [:index, :show]
   resources :skills, except: [:index, :show]
   resources :accinfos, except: [:index, :show]
+  resources :departments, except: [:index, :show]
 
 end

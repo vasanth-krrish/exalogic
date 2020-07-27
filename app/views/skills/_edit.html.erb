@@ -27,11 +27,6 @@
       <div class="control">
           <%= f.button 'Cancel', type: :reset, class: 'button is-light' %>
       </div>
-      <div class="control">
-          <%= link_to skill_path(skill), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-danger" do %>
-          <i class="fa fa-trash" aria-hidden="true"></i>
-          <% end %>
-      </div>
     </div>
 
 <% end %>

@@ -3,32 +3,44 @@
 
     <div class="column is-4">
       <div class="card">
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-          </figure>
-        </div>
         <div class="card-content">
           <div class="media">
             <div class="media-left">
-              <figure class="image is-48x48">
-                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+              <figure class="image is-128x128">
+                <% if u.basicinfo && u.basicinfo.avatar.attached? %>
+                  <%= image_tag u.basicinfo.avatar %>
+                <% else %>
+                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                <% end %>
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4">John Smith</p>
-              <p class="subtitle is-6">@johnsmith</p>
+              <br>
+              <p class="title is-4">
+                <%= link_to user_path(u) do %>
+                  <%= u.name %>
+                <% end %>
+              </p>
+              <p class="subtitle is-6"><%= u.basicinfo.empid unless u.basicinfo.nil? %></p>
             </div>
           </div>
 
           <div class="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-            <a href="#">#css</a> <a href="#">#responsive</a>
-            <br>
-            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            <p class="control has-text-left is-size-6 has-icons-left">
+              <span><i class="fa fa-envelope" aria-hidden="true"></i></span> &nbsp;&nbsp;
+              <span><a style="color:#696969;" href="mailto: <%= u.email %>"><%= u.email %></a></span><br>
+              <span><i class="fa fa-phone" aria-hidden="true"></i></span> &nbsp;&nbsp;
+              <span><a style="color:#696969;" href="tel: <%= u.basicinfo.contact %>"><%= u.basicinfo.contact %></a></span><br>
+            </p>
           </div>
         </div>
+        <footer class="card-footer">
+          <a href="<%= user_path(u) %>" class="card-footer-item">Show</a>
+          <a href="<%= edit_user_path(u) %>" class="card-footer-item">Edit</a>
+          <%= link_to user_path(u), class: "card-footer-item", method: :delete, data: {confirm: "Are you sure you want to remove " << u.name << "?"} do %>
+            Delete
+          <% end %>
+        </footer>
       </div>
     </div>
 

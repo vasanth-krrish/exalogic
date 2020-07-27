@@ -15,4 +15,5 @@ class User < ApplicationRecord
   has_many :emergencyinfos, dependent: :destroy
   has_many :skills, dependent: :destroy
   has_many :accinfos, dependent: :destroy
+  has_one :department, dependent: :destroy
 end

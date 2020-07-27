@@ -1,12 +1,21 @@
 <%= form_for basicinfo do |f| %>
-    <%= f.hidden_field :user_id, wrapper: false, class: 'input', value: id %>
-
+    <%= f.hidden_field :user_id, value: id %>
     <div class="field">
       <%= f.label "Employee id", class: 'label' %>
       <p class="control has-icons-left">
         <%= f.text_field :empid, wrapper: false, class: 'input', :value => 'EXA' << id.to_s.rjust(4,'0'), :readonly => f.object.persisted? %>
         <span class="icon is-small is-left">
-          <i class="fa fa-address-book"></i>
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label "Avatar", class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.file_field :avatar, wrapper: false, class: 'input' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
         </span>
       </p>
     </div>
@@ -34,7 +43,7 @@
     <div class="field">
       <%= f.label :contact, class: 'label' %>
       <p class="control has-icons-left">
-        <%= f.text_field :contact, wrapper: false, class: 'input', placeholder: 'Contact number', pattern: '\d*', minlength: 10, maxlength: 10 %>
+        <%= f.text_field :contact, wrapper: false, class: 'input', placeholder: 'Contact number', minlength: 10, maxlength: 10 %>
         <span class="icon is-small is-left">
           <i class="fa fa-phone"></i>
         </span>
@@ -99,7 +108,7 @@
     <div class="field">
       <%= f.label :pincode, class: 'label' %>
       <p class="control has-icons-left">
-        <%= f.text_field :pincode, wrapper: false, class: 'input', placeholder: 'Pincode', pattern: '\d*', minlength: 6, maxlength: 6 %>
+        <%= f.number_field :pincode, wrapper: false, class: 'input', placeholder: 'Pincode', min: 100000, max: 999999 %>
         <span class="icon is-small is-left">
           <i class="fa fa-address-book"></i>
         </span>
@@ -116,3 +125,5 @@
     </div>
 
 <% end %>
+
+<!-- , :readonly => f.object.persisted? -->

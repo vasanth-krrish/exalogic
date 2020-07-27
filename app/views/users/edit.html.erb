@@ -11,23 +11,37 @@
               <%= render 'form', user: '@user' %><br>
             </div>
 
+            <!-- Basicinfo Block -->
             <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="basicinfos()">Basic Info</button>
             <br>
             <div id="basicinfo" style="display: none;">
               <br>
               <% unless @user.basicinfo %>
-                  <%= render 'basicinfos/new', basicinfo: Basicinfo.new, id: @user.id %>
+                  <%= render 'basicinfos/new', basicinfo: @user.build_basicinfo, id: @user.id %>
               <% else %>
                   <%= render 'basicinfos/edit', basicinfo: @user.basicinfo, id: @user.id %>
               <% end %><br>
             </div>
 
+            <!-- Department Block -->
+            <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="departments()">Department</button>
+            <br>
+            <div id="department" style="display: none;">
+              <br>
+              <% unless @user.department %>
+                  <%= render 'departments/new', department: @user.build_department, id: @user.id %>
+              <% else %>
+                  <%= render 'departments/edit', department: @user.department, id: @user.id %>
+              <% end %><br>
+            </div>
+
+            <!-- Emergency Info Blocks -->
             <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="emergencycontacts()">Emergency Contact</button>
             <br>
             <div id="emergencycontact" style="display: none;">
               <br>
               <% if @user.emergencyinfos.count==0 %>
-                  <%= render 'emergencyinfos/new', emergencyinfo: Emergencyinfo.new, id: @user.id %>
+                  <%= render 'emergencyinfos/new', emergencyinfo: @user.emergencyinfos.build, id: @user.id %>
               <% else %>
                   <% i = 1 %>
                   <% @user.emergencyinfos.each do |e| %>
@@ -40,17 +54,18 @@
                     <span id="temp">Add Contact</span>
                   </button><br>
                   <div id="contact" style="display: none;">
-                    <br><%= render 'emergencyinfos/new', emergencyinfo: Emergencyinfo.new, id: @user.id %>
+                    <br><%= render 'emergencyinfos/new', emergencyinfo: @user.emergencyinfos.build, id: @user.id %>
                   </div>
               <% end %><br>
             </div>
 
+            <!-- Skills Block -->
             <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="skills()">Skills</button>
             <br>
             <div id="skill" style="display: none;">
               <br>
               <% if @user.skills.count==0 %>
-                  <%= render 'skills/new', skill: Skill.new, id: @user.id %>
+                  <%= render 'skills/new', skill: @user.skills.build, id: @user.id %>
               <% else %>
                   <% @user.skills.each do |e| %>
                     <%= render 'skills/edit', skill: e, id: @user.id %><br>
@@ -60,17 +75,18 @@
                     <span id="temp1">Add Skill</span>
                   </button><br>
                   <div id="tempskill" style="display: none;">
-                    <br><%= render 'skills/new', skill: Skill.new, id: @user.id %>
+                    <br><%= render 'skills/new', skill: @user.skills.build, id: @user.id %>
                   </div>
               <% end %><br>
             </div>
 
+            <!-- Accounts Block -->
             <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="accinfos()">Account Details</button>
             <br>
             <div id="accinfo" style="display: none;">
               <br>
               <% if @user.accinfos.count==0 %>
-                  <%= render 'accinfos/new', accinfo: Accinfo.new, id: @user.id %>
+                  <%= render 'accinfos/new', accinfo: @user.accinfos.build, id: @user.id %>
               <% else %>
                   <% @user.accinfos.each do |e| %>
                     <%= render 'accinfos/edit', accinfo: e, id: @user.id %><br>
@@ -80,7 +96,7 @@
                     <span id="temp2">Add Account details</span>
                   </button><br>
                   <div id="tempaccinfo" style="display: none;">
-                    <br><%= render 'accinfos/new', accinfo: Accinfo.new, id: @user.id %>
+                    <br><%= render 'accinfos/new', accinfo: @user.accinfos.build, id: @user.id %>
                   </div>
               <% end %>
             </div>
@@ -111,6 +127,16 @@ function basicinfos() {
     x.style.display = "none";
   }
 }
+
+function departments() {
+  var x = document.getElementById("department");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
 
 function emergencycontacts() {
   var x = document.getElementById("emergencycontact");

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :is_user, only: :show
 
   def index
-    @users = User.all
+    @users = User.with_role :user
   end
 
   def new
@@ -45,6 +45,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path, notice: 'User has been removed.' }
+      format.json { head :no_content }
+    end
+  end
+
+
   private
 
   def user_params
@@ -60,7 +70,7 @@ class UsersController < ApplicationController
   end
 
   def is_user
-    unless current_user == User.find(params[:id])
+    unless current_user.has_role?(:admin )|| current_user == User.find(params[:id])
       respond_to do |format|
         format.html { redirect_back fallback_location: root_path , alert: 'You are not authenticated to view the page..' }
       end
