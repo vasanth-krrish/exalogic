@@ -10,7 +10,7 @@
                 <% if u.basicinfo && u.basicinfo.avatar.attached? %>
                   <%= image_tag u.basicinfo.avatar %>
                 <% else %>
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Placeholder image">
                 <% end %>
               </figure>
             </div>
@@ -29,7 +29,7 @@
             <p class="control has-text-left is-size-6 has-icons-left">
               <span><i class="fa fa-envelope" aria-hidden="true"></i></span> &nbsp;&nbsp;
               <span><a style="color:#696969;" href="mailto: <%= u.email %>"><%= u.email %></a></span><br>
-              <% if u.basicinfo %>
+              <% if u.basicinfo && u.basicinfo.contact!="" %>
               <span><i class="fa fa-phone" aria-hidden="true"></i></span> &nbsp;&nbsp;
               <span><a style="color:#696969;" href="tel: <%= u.basicinfo.contact %>"><%= u.basicinfo.contact %></a></span><br>
               <% end %>

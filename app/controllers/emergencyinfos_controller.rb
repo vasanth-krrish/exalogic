@@ -1,10 +1,6 @@
 class EmergencyinfosController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @emergencyinfo = Emergencyinfo.new
-  end
-
   def create
     @emergencyinfo = Emergencyinfo.new(emergencyinfo_params)
     respond_to do |format|
@@ -16,10 +12,6 @@ class EmergencyinfosController < ApplicationController
         format.json { render json: @emergencyinfo.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
-    @emergencyinfo = Emergencyinfo.find(params[:id])
   end
 
   def update

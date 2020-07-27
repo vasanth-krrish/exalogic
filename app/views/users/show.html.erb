@@ -1,0 +1,127 @@
+<% user = User.find(params[:id]) %>
+<div class="card">
+  <div class="card-content">
+
+    <button class="button is-white is-medium is-outlined" onclick="basicinfos()">
+      <span class="icon" style="color:dimgray;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+      <span><p style="color:black;" class="is-size-4 has-text-weight-medium	">User Details</p></span>
+    </button>
+
+    <div id="basicinfo" style="display: block;">
+      <div class="card">
+        <div class="card-content">
+            <% if user.basicinfo.avatar.attached? %>
+              <div class="columns">
+                <div class="column">
+                  <figure class="image is-128x128">
+                    <%= image_tag user.basicinfo.avatar %>
+                  </figure>
+                </div>
+              </div>
+            <% end %>
+            <table class="table is-striped is-hoverable">
+              <tbody>
+                <tr>
+                  <th>Name</th>
+                  <td><%= user.name %></td>
+                  <th>Employee id</th>
+                  <td><%= user.basicinfo.empid %></td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <td><%= user.email %></td>
+                  <th>Contact</th>
+                  <td><%= user.basicinfo.contact %></td>
+                </tr>
+                <tr>
+                  <th>Date of birth</th>
+                  <td><%= user.basicinfo.dob %></td>
+                  <th>Contact</th>
+                  <td><%= user.basicinfo.doj %></td>
+                </tr>
+                <tr>
+                  <th>Gender</th>
+                  <td><%= user.basicinfo.gender %></td>
+                  <th>Blood type</th>
+                  <td><%= user.basicinfo.bloodtype %></td>
+                </tr>
+                <tr>
+                  <th>Adrress</th>
+                  <td colspan="3"><%= user.basicinfo.address %>, <%= user.basicinfo.city %>, <%= user.basicinfo.state %>, <%= user.basicinfo.country %> - <%= user.basicinfo.pincode %></td>
+                </tr>
+                <tr>
+                  <th>Department</th>
+                  <td><%= user.department.department %></td>
+                  <th>Designation</th>
+                  <td><%= user.department.designation %></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div><br>
+
+    <button class="button is-white is-medium is-outlined" onclick="emergencyinfos()">
+      <span class="icon" style="color:dimgray;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+      <span><p style="color:black;" class="is-size-4 has-text-weight-medium	">Emergency Contacts</p></span>
+    </button>
+
+    <div id="emergencyinfo" style="display: none;">
+      <% user.emergencyinfos.each do |e| %>
+        <div class="card">
+          <div class="card-content">
+            <table class="table is-striped is-hoverable">
+              <tbody>
+                <tr>
+                  <th>Name</th>
+                  <td><%= e.name %></td>
+                  <th>Contact</th>
+                  <td><%= e.contact %></td>
+                </tr>
+                <tr>
+                  <th>Relation</th>
+                  <td colspan="3"><%= e.relation %></td>
+                </tr>
+                <tr>
+                  <th>Adrress</th>
+                  <td colspan="3"><%= e.address %>, <%= e.city %>, <%= e.state %>, <%= e.country %> - <%= e.pincode %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><br>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  function basicinfos() {
+    var x = document.getElementById("basicinfo");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  function emergencyinfos() {
+    var x = document.getElementById("emergencyinfo");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>
+
+<style media="screen">
+  table {
+  table-layout: fixed ;
+  width: 100% ;
+}
+td th {
+  width: 25% ;
+}
+</style>

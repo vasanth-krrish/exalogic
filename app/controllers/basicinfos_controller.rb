@@ -1,10 +1,6 @@
 class BasicinfosController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @basicinfo = Basicinfo.new
-  end
-
   def create
     @basicinfo = Basicinfo.new(basicinfo_params)
     respond_to do |format|
@@ -16,10 +12,6 @@ class BasicinfosController < ApplicationController
         format.json { render json: @basicinfo.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
-    @basicinfo = Basicinfo.find(params[:id])
   end
 
   def update

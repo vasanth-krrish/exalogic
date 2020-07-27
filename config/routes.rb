@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :basicinfos, except: [:index, :show]
-  resources :emergencyinfos, except: [:index, :show]
-  resources :skills, except: [:index, :show]
-  resources :accinfos, except: [:index, :show]
-  resources :departments, except: [:index, :show]
+  resources :basicinfos, only: [:create, :update, :destroy]
+  resources :emergencyinfos, only: [:create, :update, :destroy]
+  resources :skills, only: [:create, :update, :destroy]
+  resources :accinfos, only: [:create, :update, :destroy]
+  resources :departments, only: [:create, :update, :destroy]
 
 end

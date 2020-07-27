@@ -1,10 +1,6 @@
 class SkillsController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @skill = Skill.new
-  end
-
   def create
     @skill = Skill.new(skill_params)
     respond_to do |format|
@@ -16,10 +12,6 @@ class SkillsController < ApplicationController
         format.json { render json: @skill.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
-    @skill = Skill.find(params[:id])
   end
 
   def update

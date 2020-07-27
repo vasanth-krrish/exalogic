@@ -1,10 +1,6 @@
 class DepartmentsController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @department = Department.new
-  end
-
   def create
     @department = Department.new(department_params)
     respond_to do |format|
@@ -16,10 +12,6 @@ class DepartmentsController < ApplicationController
         format.json { render json: @department.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
-    @department = Department.find(params[:id])
   end
 
   def update

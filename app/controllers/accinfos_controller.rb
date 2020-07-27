@@ -1,10 +1,6 @@
 class AccinfosController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @accinfo = Accinfo.new
-  end
-
   def create
     @accinfo = Accinfo.new(skill_params)
     respond_to do |format|
@@ -16,10 +12,6 @@ class AccinfosController < ApplicationController
         format.json { render json: @accinfo.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def edit
-    @accinfo = Accinfo.find(params[:id])
   end
 
   def update
