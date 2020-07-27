@@ -71,8 +71,8 @@
                     <span id="temp2">Add Account details</span>
                   </button><br>
                   <div id="tempaccinfo" style="display: none;">
-                    <br><%= render 'accinfos/new', accinfo: @user.accinfos.build, id: @user.id %>
-                  </div>
+                    <%= render 'accinfos/new', accinfo: @user.accinfos.build, id: @user.id %>
+                  </div><br>
             </div>
             <div class="field is-grouped is-grouped-centered">
               <p class="buttons">
