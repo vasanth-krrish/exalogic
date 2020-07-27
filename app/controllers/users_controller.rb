@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :is_user, only: :show
 
   def index
-    @users = User.with_role :user
   end
 
   def new

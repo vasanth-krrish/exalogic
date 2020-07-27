@@ -1,4 +1,5 @@
 <% user = User.find(params[:id]) %>
+<% content_for :page_title, user.name %>
 <div class="card">
   <div class="card-content">
 
@@ -154,7 +155,39 @@
         </div>
       </div>
     </div>
-
+    <br><br>
+    <div class="columns">
+      <div class="column is-4">
+        <div class="field is-grouped is-grouped-left">
+          <p class="buttons">
+            <%= link_to url_for(:back), class: "button is-dark" do %>
+              <span class="icon">
+                <i class="fa fa-arrow-left"></i>
+              </span>
+              <span>Back</span>
+            <% end %>
+            <%= link_to root_path, class: "button is-light" do %>
+              <span class="icon">
+                <i class="fa fa-home"></i>
+              </span>
+              <span>Home</span>
+            <% end %>
+            <%= link_to edit_user_path(user), class: "button is-info" do %>
+              <span class="icon">
+                <i class="fa fa-pencil"></i>
+              </span>
+              <span>Edit</span>
+            <% end %>
+            <%= link_to user_path(user), class: "button is-danger is-outlined", method: :delete, data: {confirm: "Are you sure you want to remove " << user.name << "?"} do %>
+              <span class="icon">
+                <i class="fa fa-trash"></i>
+              </span>
+              <span>Delete</span>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
