@@ -91,6 +91,64 @@
           </div>
         </div><br>
       <% end %>
+    </div><br>
+
+    <button class="button is-white is-medium is-outlined" onclick="skills()">
+      <span class="icon" style="color:dimgray;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+      <span><p style="color:black;" class="is-size-4 has-text-weight-medium	">Skills</p></span>
+    </button>
+
+    <div id="skill" style="display: none;">
+      <div class="card">
+        <div class="card-content">
+          <table class="table is-striped is-hoverable">
+            <tbody>
+              <% user.skills.each do |e| %>
+                <tr>
+                  <th>Skill</th>
+                  <td><%= e.skill %></td>
+                  <th>Experience in years</th>
+                  <td><%= e.experience %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><br>
+
+    <button class="button is-white is-medium is-outlined" onclick="accounts()">
+      <span class="icon" style="color:dimgray;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+      <span><p style="color:black;" class="is-size-4 has-text-weight-medium	">Account Details</p></span>
+    </button>
+
+    <div id="account" style="display: none;">
+      <div class="card">
+        <div class="card-content">
+            <% user.accinfos.each do |e| %>
+              <table class="table is-striped is-hoverable">
+                <tbody>
+                  <tr>
+                    <th>Name as in bank</th>
+                    <td colspan="3"><%= e.name %></td>
+                  </tr>
+                  <tr>
+                    <th>Account Number</th>
+                    <td><%= e.accno %></td>
+                    <th>Bank</th>
+                    <td><%= e.bank %></td>
+                  </tr>
+                  <tr>
+                    <th>IFSC code</th>
+                    <td><%= e.ifsc %></td>
+                    <th>Branch</th>
+                    <td><%= e.branch %></td>
+                  </tr>
+                </tbody>
+              </table>
+            <% end %>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -108,6 +166,22 @@
   }
   function emergencyinfos() {
     var x = document.getElementById("emergencyinfo");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  function skills() {
+    var x = document.getElementById("skill");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  function accounts() {
+    var x = document.getElementById("account");
     if (x.style.display === "none") {
       x.style.display = "block";
     } else {

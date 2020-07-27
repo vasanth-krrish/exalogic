@@ -15,6 +15,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+        @user.build_basicinfo.save
+        @user.basicinfo.update(empid: 'EXA' << @user.id.to_s.rjust(4,'0'))
+        @user.build_department.save
+        @user.accinfos.build.save
+        @user.emergencyinfos.build.save
+        @user.skills.build.save
         format.html { redirect_to edit_user_path(@user), notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

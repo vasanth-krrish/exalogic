@@ -15,39 +15,23 @@
             <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="basicinfos()">Basic Info</button>
             <br>
             <div id="basicinfo" style="display: none;">
-              <br>
-              <% unless @user.basicinfo %>
-                  <%= render 'basicinfos/new', basicinfo: @user.build_basicinfo, id: @user.id %>
-              <% else %>
-                  <%= render 'basicinfos/edit', basicinfo: @user.basicinfo, id: @user.id %>
-              <% end %><br>
+              <br><%= render 'basicinfos/edit', basicinfo: @user.basicinfo %><br>
             </div>
 
             <!-- Department Block -->
             <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="departments()">Department</button>
             <br>
             <div id="department" style="display: none;">
-              <br>
-              <% unless @user.department %>
-                  <%= render 'departments/new', department: @user.build_department, id: @user.id %>
-              <% else %>
-                  <%= render 'departments/edit', department: @user.department, id: @user.id %>
-              <% end %><br>
+              <br><%= render 'departments/edit', department: @user.department %><br>
             </div>
 
             <!-- Emergency Info Blocks -->
             <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="emergencycontacts()">Emergency Contact</button>
             <br>
-            <div id="emergencycontact" style="display: none;">
-              <br>
-              <% if @user.emergencyinfos.count==0 %>
-                  <%= render 'emergencyinfos/new', emergencyinfo: @user.emergencyinfos.build, id: @user.id %>
-              <% else %>
-                  <% i = 1 %>
-                  <% @user.emergencyinfos.each do |e| %>
+            <div id="emergencycontact" style="display: none;"><% i=1 %>
+              <br><% @user.emergencyinfos.each do |e| %>
                     <label class="label">Emergency Contact <%= i %><% i+=1 %></label>
-
-                    <%= render 'emergencyinfos/edit', emergencyinfo: e, id: @user.id %><br>
+                    <%= render 'emergencyinfos/edit', emergencyinfo: e %><br>
                   <% end %>
                   <button class="button is-rounded" onclick="contacts()"><span class="icon">
                     <i class="fa fa-plus-circle"></i></span>
@@ -55,19 +39,14 @@
                   </button><br>
                   <div id="contact" style="display: none;">
                     <br><%= render 'emergencyinfos/new', emergencyinfo: @user.emergencyinfos.build, id: @user.id %>
-                  </div>
-              <% end %><br>
+                  </div><br>
             </div>
 
             <!-- Skills Block -->
             <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="skills()">Skills</button>
             <br>
             <div id="skill" style="display: none;">
-              <br>
-              <% if @user.skills.count==0 %>
-                  <%= render 'skills/new', skill: @user.skills.build, id: @user.id %>
-              <% else %>
-                  <% @user.skills.each do |e| %>
+              <br><% @user.skills.each do |e| %>
                     <%= render 'skills/edit', skill: e, id: @user.id %><br>
                   <% end %>
                   <button class="button is-rounded" onclick="tempskills()"><span class="icon">
@@ -76,19 +55,14 @@
                   </button><br>
                   <div id="tempskill" style="display: none;">
                     <br><%= render 'skills/new', skill: @user.skills.build, id: @user.id %>
-                  </div>
-              <% end %><br>
+                  </div><br>
             </div>
 
             <!-- Accounts Block -->
             <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="accinfos()">Account Details</button>
             <br>
             <div id="accinfo" style="display: none;">
-              <br>
-              <% if @user.accinfos.count==0 %>
-                  <%= render 'accinfos/new', accinfo: @user.accinfos.build, id: @user.id %>
-              <% else %>
-                  <% @user.accinfos.each do |e| %>
+              <br><% @user.accinfos.each do |e| %>
                     <%= render 'accinfos/edit', accinfo: e, id: @user.id %><br>
                   <% end %>
                   <button class="button is-rounded" onclick="tempaccinfos()"><span class="icon">
@@ -98,7 +72,6 @@
                   <div id="tempaccinfo" style="display: none;">
                     <br><%= render 'accinfos/new', accinfo: @user.accinfos.build, id: @user.id %>
                   </div>
-              <% end %>
             </div>
 
           </div>

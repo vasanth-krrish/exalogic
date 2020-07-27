@@ -15,7 +15,7 @@
     <div class="field">
       <%= f.label "Employee id", class: 'label' %>
       <p class="control has-icons-left">
-        <%= f.text_field :empid, wrapper: false, class: 'input', :value => 'EXA' << id.to_s.rjust(4,'0'), :readonly => f.object.persisted? %>
+        <%= f.text_field :empid, wrapper: false, class: 'input' %>
         <span class="icon is-small is-left">
           <i class="fa fa-user"></i>
         </span>
@@ -137,3 +137,5 @@
     </div>
 
 <% end %>
+
+<!-- , :value => 'EXA' << id.to_s.rjust(4,'0'), :readonly => f.object.persisted? -->
