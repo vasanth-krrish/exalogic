@@ -76,11 +76,13 @@
             </div>
             <div class="field is-grouped">
               <p class="buttons">
+                <% if current_user.has_role?(:admin) %>
                 <%= link_to root_path, class: "button is-dark" do %>
                   <span class="icon">
                     <i class="fa fa-home"></i>
                   </span>
                   <span>Home</span>
+                <% end %>
                 <% end %>
                 <%= link_to user_path(@user), class: "button is-info" do %>
                   <span class="icon">

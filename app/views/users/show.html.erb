@@ -160,17 +160,19 @@
       <div class="column is-4">
         <div class="field is-grouped">
           <p class="buttons">
-            <%= link_to url_for(:back), class: "button is-dark" do %>
-              <span class="icon">
-                <i class="fa fa-arrow-left"></i>
-              </span>
-              <span>Back</span>
-            <% end %>
-            <%= link_to root_path, class: "button is-light" do %>
-              <span class="icon">
-                <i class="fa fa-home"></i>
-              </span>
-              <span>Home</span>
+            <% if current_user.has_role?(:admin) %>
+              <%= link_to url_for(:back), class: "button is-dark" do %>
+                <span class="icon">
+                  <i class="fa fa-arrow-left"></i>
+                </span>
+                <span>Back</span>
+              <% end %>
+              <%= link_to root_path, class: "button is-light" do %>
+                <span class="icon">
+                  <i class="fa fa-home"></i>
+                </span>
+                <span>Home</span>
+              <% end %>
             <% end %>
             <%= link_to edit_user_path(user), class: "button is-info" do %>
               <span class="icon">

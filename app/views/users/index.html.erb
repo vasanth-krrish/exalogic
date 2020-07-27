@@ -1,4 +1,7 @@
-<% content_for :page_title, 'Users List' %>
-<div class="columns is-multiline is-mobile">
-    <%= render 'main', users: User.with_role(:user) %>
-</div>
+
+<% if current_user.has_role?(:admin) %>
+<% content_for :page_title, "Users List" %>
+  <div class="columns is-multiline is-mobile">
+      <%= render 'main', users: User.with_role(:user) %>
+  </div>
+<% end %>

@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
-  before_action :is_admin, except: [:index, :show]
-  before_action :authenticate_user!, only: [:index,:show]
+  before_action :is_admin, except: [:index, :show, :edit, :destroy]
+  before_action :authenticate_user!, only: [:index,:show, :edit, :destroy]
   before_action :is_user, only: :show
 
   def index
+    if current_user.has_role? :user
+      redirect_to user_path(current_user)
+    end
   end
 
   def new
@@ -31,6 +34,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless current_user.has_role?(:admin) || current_user == @user
+      respond_to do |f|
+        f.html { redirect_back fallback_location: root_path, alert: 'You are not authenticated to view the page..' }
+      end
+    end
   end
 
   def update
@@ -52,6 +60,11 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    unless current_user.has_role?(:admin) || current_user == @user
+      respond_to do |f|
+        f.html { redirect_back fallback_location: root_path, alert: 'You are not authenticated to view the page..' }
+      end
+    end
     @user.destroy
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path, notice: 'User has been removed.' }

@@ -81,24 +81,17 @@
                 <div class="navbar-end">
                   <div class="field is-grouped">
                     <% if user_signed_in? %>
-                      <div class="control navbar-item">
-                        <%= link_to root_path, class: "button is-info" do%>
-                          <span class="icon"><i class="fa fa-home"></i></span>
-                          <span>Home</span>
-                        <% end %>
-                      </div>
                           <% if current_user.has_role?(:admin) %>
+                            <div class="control navbar-item">
+                              <%= link_to root_path, class: "button is-info" do%>
+                                <span class="icon"><i class="fa fa-home"></i></span>
+                                <span>Home</span>
+                              <% end %>
+                            </div>
                             <div class=" control navbar-item">
                               <%= link_to new_user_path, class: "button is-primary" do%>
                               <span class="icon"><i class="fa fa-plus"></i></span>
                               <span>New User</span>
-                              <% end %>
-                            </div>
-                          <% else %>
-                            <div class="control navbar-item">
-                              <%= link_to user_path(current_user), class: "button is-info" do %>
-                                  <span class="icon is-small"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
-                                  <span><%= current_user.name %></span>
                               <% end %>
                             </div>
                           <% end %>
