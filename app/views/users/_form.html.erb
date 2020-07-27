@@ -1,0 +1,51 @@
+<%= form_for @user do |f| %>
+    <div class="field">
+      <p class="control has-icons-left">
+        <%= f.text_field :name, wrapper: false, class: 'input', placeholder: 'Employee name' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <p class="control has-icons-left">
+        <%= f.email_field :email, wrapper: false, class: 'input', placeholder: 'Email address' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-envelope"></i>
+        </span>
+      </p>
+    </div>
+
+    <% if current_page?(action: :new) %>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <%= f.password_field :password, wrapper: false, class: 'input', placeholder: 'Enter password here...' %>
+          <span class="icon is-small is-left">
+            <i class="fa fa-unlock-alt"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control has-icons-left">
+          <%= f.password_field :password_confirmation, wrapper: false, class: 'input', placeholder: 'Confirm password here...' %>
+          <span class="icon is-small is-left">
+            <i class="fa fa-unlock-alt"></i>
+          </span>
+        </p>
+      </div>
+
+    <% end %>
+
+    <div class="field is-grouped is-grouped-centered">
+      <div class="control">
+          <%= f.submit 'Submit', class: 'button is-primary' %>
+      </div>
+      <div class="control">
+          <%= f.button 'Cancel', type: :reset, class: 'button is-light' %>
+      </div>
+    </div>
+
+<% end %>

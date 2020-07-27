@@ -1,0 +1,178 @@
+<div class="columns">
+    <div class="column is-8 is-offset-2">
+      <div class="card">
+        <div class="card-content">
+          <div class="column is-6 is-offset-3">
+
+            <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="userdetails()">User Details</button>
+            <br>
+            <div id="userdetail" style="display: none;">
+              <br>
+              <%= render 'form', user: '@user' %><br>
+            </div>
+
+            <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="basicinfos()">Basic Info</button>
+            <br>
+            <div id="basicinfo" style="display: none;">
+              <br>
+              <% unless @user.basicinfo %>
+                  <%= render 'basicinfos/new', basicinfo: Basicinfo.new, id: @user.id %>
+              <% else %>
+                  <%= render 'basicinfos/edit', basicinfo: @user.basicinfo, id: @user.id %>
+              <% end %><br>
+            </div>
+
+            <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="emergencycontacts()">Emergency Contact</button>
+            <br>
+            <div id="emergencycontact" style="display: none;">
+              <br>
+              <% if @user.emergencyinfos.count==0 %>
+                  <%= render 'emergencyinfos/new', emergencyinfo: Emergencyinfo.new, id: @user.id %>
+              <% else %>
+                  <% i = 1 %>
+                  <% @user.emergencyinfos.each do |e| %>
+                    <label class="label">Emergency Contact <%= i %><% i+=1 %></label>
+
+                    <%= render 'emergencyinfos/edit', emergencyinfo: e, id: @user.id %><br>
+                  <% end %>
+                  <button class="button is-rounded" onclick="contacts()"><span class="icon">
+                    <i class="fa fa-plus-circle"></i></span>
+                    <span id="temp">Add Contact</span>
+                  </button><br>
+                  <div id="contact" style="display: none;">
+                    <br><%= render 'emergencyinfos/new', emergencyinfo: Emergencyinfo.new, id: @user.id %>
+                  </div>
+              <% end %><br>
+            </div>
+
+            <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="skills()">Skills</button>
+            <br>
+            <div id="skill" style="display: none;">
+              <br>
+              <% if @user.skills.count==0 %>
+                  <%= render 'skills/new', skill: Skill.new, id: @user.id %>
+              <% else %>
+                  <% @user.skills.each do |e| %>
+                    <%= render 'skills/edit', skill: e, id: @user.id %><br>
+                  <% end %>
+                  <button class="button is-rounded" onclick="tempskills()"><span class="icon">
+                    <i class="fa fa-plus-circle"></i></span>
+                    <span id="temp1">Add Skill</span>
+                  </button><br>
+                  <div id="tempskill" style="display: none;">
+                    <br><%= render 'skills/new', skill: Skill.new, id: @user.id %>
+                  </div>
+              <% end %><br>
+            </div>
+
+            <button class="button is-primary is-fullwidth is-medium is-outlined" onclick="accinfos()">Account Details</button>
+            <br>
+            <div id="accinfo" style="display: none;">
+              <br>
+              <% if @user.accinfos.count==0 %>
+                  <%= render 'accinfos/new', accinfo: Accinfo.new, id: @user.id %>
+              <% else %>
+                  <% @user.accinfos.each do |e| %>
+                    <%= render 'accinfos/edit', accinfo: e, id: @user.id %><br>
+                  <% end %>
+                  <button class="button is-rounded" onclick="tempaccinfos()"><span class="icon">
+                    <i class="fa fa-plus-circle"></i></span>
+                    <span id="temp2">Add Account details</span>
+                  </button><br>
+                  <div id="tempaccinfo" style="display: none;">
+                    <br><%= render 'accinfos/new', accinfo: Accinfo.new, id: @user.id %>
+                  </div>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+<script>
+
+function userdetails() {
+  var x = document.getElementById("userdetail");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function basicinfos() {
+  var x = document.getElementById("basicinfo");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function emergencycontacts() {
+  var x = document.getElementById("emergencycontact");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function contacts() {
+  var x = document.getElementById("contact");
+  var y = document.getElementById("temp");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.innerHTML = "Remove Contact";
+  } else {
+    x.style.display = "none";
+    y.innerHTML = "Add Contact";
+  }
+}
+
+function skills() {
+  var x = document.getElementById("skill");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function tempskills() {
+  var x = document.getElementById("tempskill");
+  var y = document.getElementById("temp1");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.innerHTML = "Remove Skill";
+  } else {
+    x.style.display = "none";
+    y.innerHTML = "Add Skill";
+  }
+}
+
+function accinfos() {
+  var x = document.getElementById("accinfo");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+function tempaccinfos() {
+  var x = document.getElementById("tempaccinfo");
+  var y = document.getElementById("temp2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.innerHTML = "Remove Account details";
+  } else {
+    x.style.display = "none";
+    y.innerHTML = "Add Account details";
+  }
+}
+
+</script>

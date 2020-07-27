@@ -1,0 +1,2 @@
+module EmergencyinfosHelper
+end

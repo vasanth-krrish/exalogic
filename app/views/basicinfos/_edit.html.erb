@@ -1,0 +1,117 @@
+<%= form_for basicinfo do |f| %>
+
+    <div class="field">
+      <%= f.label "Employee id", class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :empid, wrapper: false, class: 'input', :value => 'EXA' << id.to_s.rjust(4,'0'), :readonly => f.object.persisted? %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-address-book"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label "Date of Birth", class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.date_field :dob, wrapper: false, class: 'input' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-calendar"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label "Date of Joining", class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.date_field :doj, wrapper: false, class: 'input' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-calendar"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :contact, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.number_field :contact, wrapper: false, class: 'input', placeholder: 'Contact number', min: 1000000000, max: 9999999999 %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-phone"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label "Blood type", class: 'label' %>
+      <div class="select">
+        <p class="control">
+        <%= f.select :bloodtype, [['Select Bloodtype',nil],'AB+','AB-','A+','A-','B+','B-','O+','O-'], wrapper: false %>
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :gender, class: 'label' %>
+      <div class="select">
+        <p class="control">
+        <%= f.select :gender, [['Select Gender',nil],'Male','Female'], wrapper: false %>
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :address, class: 'label' %>
+      <p class="control">
+        <%= f.text_area :address, wrapper: false, class: 'textarea', placeholder: 'Enter address here..', rows: 2 %>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :city, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :city, wrapper: false, class: 'input', placeholder: 'City' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-address-book"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :state, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :state, wrapper: false, class: 'input', placeholder: 'State' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-address-book"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :country, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :country, wrapper: false, class: 'input', placeholder: 'Country' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-address-book"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :pincode, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.number_field :pincode, wrapper: false, class: 'input', placeholder: 'Pincode', min: 100000, max: 999999 %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-address-book"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field is-grouped is-grouped-centered">
+      <div class="control">
+          <%= f.submit 'Submit', class: 'button is-primary' %>
+      </div>
+      <div class="control">
+          <%= f.button 'Cancel', type: :reset, class: 'button is-light' %>
+      </div>
+    </div>
+
+<% end %>

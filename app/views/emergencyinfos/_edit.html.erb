@@ -1,0 +1,93 @@
+<%= form_for emergencyinfo do |f| %>
+
+    <div class="field">
+      <%= f.label :name, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :name, wrapper: false, class: 'input', placeholder: 'Name' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :relation, class: 'label' %>
+      <div class="select">
+        <p class="control">
+        <%= f.select :relation, [['Select Relation',nil],'Parent','Friend','Spouse','Relative'], wrapper: false %>
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :contact, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :contact, wrapper: false, class: 'input', placeholder: 'Contact number', pattern: '\d*', minlength: 10, maxlength: 10 %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-phone"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :address, class: 'label' %>
+      <p class="control">
+        <%= f.text_area :address, wrapper: false, class: 'textarea', placeholder: 'Enter address here..', rows: 2 %>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :city, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :city, wrapper: false, class: 'input', placeholder: 'City' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-address-book"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :state, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :state, wrapper: false, class: 'input', placeholder: 'State' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-address-book"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :country, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :country, wrapper: false, class: 'input', placeholder: 'Country' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-address-book"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :pincode, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :pincode, wrapper: false, class: 'input', placeholder: 'Pincode', pattern: '\d*', minlength: 6, maxlength: 6 %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-address-book"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field is-grouped is-grouped-centered">
+      <div class="control">
+          <%= f.submit 'Submit', class: 'button is-primary' %>
+      </div>
+      <div class="control">
+          <%= f.button 'Cancel', type: :reset, class: 'button is-light' %>
+      </div>
+      <div class="control">
+          <%= link_to emergencyinfo_path(emergencyinfo), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-danger" do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+      </div>
+    </div>
+
+<% end %>

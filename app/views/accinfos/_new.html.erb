@@ -1,0 +1,63 @@
+<%= form_for accinfo do |f| %>
+    <%= f.hidden_field :user_id, wrapper: false, class: 'input', value: id %>
+
+    <div class="field">
+      <%= f.label :name, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :name, wrapper: false, class: 'input', placeholder: 'Name as in bank account' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :accno, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :accno, wrapper: false, class: 'input', placeholder: 'Account number', pattern: '\d*' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :bank, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :bank, wrapper: false, class: 'input', placeholder: 'Bank' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :branch, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :branch, wrapper: false, class: 'input', placeholder: 'Branch' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :ifsc, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :ifsc, wrapper: false, class: 'input', placeholder: 'IFSC code' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field is-grouped is-grouped-centered">
+      <div class="control">
+          <%= f.submit 'Submit', class: 'button is-primary' %>
+      </div>
+      <div class="control">
+          <%= f.button 'Cancel', type: :reset, class: 'button is-light' %>
+      </div>
+    </div>
+
+<% end %>

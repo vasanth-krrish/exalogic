@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dob: 2020-07-26
+  doj: 2020-07-26
+  empid: MyString
+  bloodtype: MyString
+  contact: MyString
+  gender: MyString
+  address: MyText
+  state: MyString
+  city: MyString
+  country: MyString
+  pincode: MyString
+
+two:
+  dob: 2020-07-26
+  doj: 2020-07-26
+  empid: MyString
+  bloodtype: MyString
+  contact: MyString
+  gender: MyString
+  address: MyText
+  state: MyString
+  city: MyString
+  country: MyString
+  pincode: MyString

@@ -1,0 +1,37 @@
+<%= form_for skill do |f| %>
+
+    <div class="field">
+      <%= f.label :skill, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.text_field :skill, wrapper: false, class: 'input', placeholder: 'Skill' %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field">
+      <%= f.label :experience, class: 'label' %>
+      <p class="control has-icons-left">
+        <%= f.number_field :experience, wrapper: false, class: 'input', placeholder: 'Experience in years', min: 0 %>
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+
+    <div class="field is-grouped is-grouped-centered">
+      <div class="control">
+          <%= f.submit 'Submit', class: 'button is-primary' %>
+      </div>
+      <div class="control">
+          <%= f.button 'Cancel', type: :reset, class: 'button is-light' %>
+      </div>
+      <div class="control">
+          <%= link_to skill_path(skill), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-danger" do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+      </div>
+    </div>
+
+<% end %>
