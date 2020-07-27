@@ -10,15 +10,17 @@
     <div id="basicinfo" style="display: block;">
       <div class="card">
         <div class="card-content">
-            <% if user.basicinfo.avatar.attached? %>
-              <div class="columns">
-                <div class="column">
-                  <figure class="image is-128x128">
-                    <%= image_tag user.basicinfo.avatar %>
-                  </figure>
-                </div>
-              </div>
+          <figure class="image is-128x128">
+            <% if Uploadable.count != 0 %>
+              <% if user.basicinfo && user.basicinfo.avatar.attached? %>
+                <%= image_tag user.basicinfo.avatar %>
+              <% end %>
+            <% else %>
+              <% unless user.basicinfo.avatar_url=='' || user.basicinfo.avatar_url.nil? %>
+                <img src="<%= user.basicinfo.avatar_url %>" alt="">
+              <% end %>
             <% end %>
+          </figure>
             <table class="table is-striped is-hoverable">
               <tbody>
                 <tr>

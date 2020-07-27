@@ -1,15 +1,25 @@
 <%= form_for basicinfo do |f| %>
-
-    <% if basicinfo.avatar.attached? %>
+    <% if Uploadable.count!=0 && basicinfo.avatar.attached? %>
       <div class="columns">
         <div class="column"></div>
-        <div class="column">
-          <figure class="image is-128x128">
-            <%= image_tag basicinfo.avatar %>
-          </figure>
-        </div>
+          <div class="column">
+            <figure class="image is-128x128">
+              <%= image_tag basicinfo.avatar %>
+            </figure>
+          </div>
         <div class="column"></div>
       </div>
+    <% end %>
+    <% unless Uploadable.count==0 && (basicinfo.avatar_url=='' || basicinfo.avatar_url.nil? )%>
+    <div class="columns">
+      <div class="column"></div>
+        <div class="column">
+          <figure class="image is-128x128">
+            <image src="<%= basicinfo.avatar_url %>" alt="">
+          </figure>
+        </div>
+      <div class="column"></div>
+    </div>
     <% end %>
 
     <div class="field">
@@ -25,7 +35,11 @@
     <div class="field">
       <%= f.label "Avatar", class: 'label' %>
       <p class="control has-icons-left">
-        <%= f.file_field :avatar, wrapper: false, class: 'input' %>
+        <% if Uploadable.count == 0 %>
+          <%= f.text_field :avatar_url, wrapper: false, class: 'input' %>
+        <% else %>
+          <%= f.file_field :avatar, wrapper: false, class: 'input' %>
+        <% end %>
         <span class="icon is-small is-left">
           <i class="fa fa-user"></i>
         </span>

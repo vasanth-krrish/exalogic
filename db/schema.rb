@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_073516) do
+ActiveRecord::Schema.define(version: 2020_07_27_111150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_073516) do
     t.string "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "avatar_url"
     t.index ["user_id"], name: "index_basicinfos_on_user_id", unique: true
   end
 
@@ -101,6 +102,11 @@ ActiveRecord::Schema.define(version: 2020_07_27_073516) do
     t.integer "user_id"
     t.string "skill"
     t.integer "experience"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "uploadables", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

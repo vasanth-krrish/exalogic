@@ -30,7 +30,7 @@ class BasicinfosController < ApplicationController
   private
 
   def basicinfo_params
-    params.require(:basicinfo).permit(:dob,:doj,:user_id,:empid,:bloodtype,:contact,:gender,:address,:city,:state,:country,:pincode,:avatar)
+    params.require(:basicinfo).permit(:dob,:doj,:user_id,:empid,:bloodtype,:contact,:gender,:address,:city,:state,:country,:pincode,:avatar,:avatar_url)
   end
 
 end

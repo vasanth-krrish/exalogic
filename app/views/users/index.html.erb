@@ -7,10 +7,18 @@
           <div class="media">
             <div class="media-left">
               <figure class="image is-128x128">
-                <% if u.basicinfo && u.basicinfo.avatar.attached? %>
-                  <%= image_tag u.basicinfo.avatar %>
+                <% if Uploadable.count != 0 %>
+                  <% if u.basicinfo && u.basicinfo.avatar.attached? %>
+                    <%= image_tag u.basicinfo.avatar %>
+                  <% else %>
+                      <img src="https://bulma.io/images/placeholders/128x128.png" alt="Placeholder image">
+                  <% end %>
                 <% else %>
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Placeholder image">
+                  <% unless u.basicinfo.avatar_url=='' || u.basicinfo.avatar_url.nil? %>
+                    <img src="<%= u.basicinfo.avatar_url %>" alt="">
+                  <% else %>
+                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Placeholder image">
+                  <% end %>
                 <% end %>
               </figure>
             </div>
