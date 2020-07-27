@@ -29,8 +29,10 @@
             <p class="control has-text-left is-size-6 has-icons-left">
               <span><i class="fa fa-envelope" aria-hidden="true"></i></span> &nbsp;&nbsp;
               <span><a style="color:#696969;" href="mailto: <%= u.email %>"><%= u.email %></a></span><br>
+              <% if u.basicinfo %>
               <span><i class="fa fa-phone" aria-hidden="true"></i></span> &nbsp;&nbsp;
               <span><a style="color:#696969;" href="tel: <%= u.basicinfo.contact %>"><%= u.basicinfo.contact %></a></span><br>
+              <% end %>
             </p>
           </div>
         </div>
